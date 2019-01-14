@@ -1,4 +1,5 @@
 "use strict"
+// from core
 const select = require("soupselect-update").select;
 const htmlparser = require("htmlparser2");
 const RATE = {
