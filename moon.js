@@ -327,7 +327,7 @@ const WEBSITES = {
       ".offer-price",
       "#alohaPricingWidget .a-color-price"
     ],
-    PRICE3RDBLOCK:[
+    REDIRECT:[
       "#availability a"
     ],
     SHIPPINGBLOCK: [
@@ -353,10 +353,11 @@ const WEBSITES = {
   },
   CARTERS: {
     TAX: 0.083,
-    MATCH: "carters",
+    MATCH: "carters.com",
     NAME: "Carters",
-    PRICEBLOCK:
+    PRICEBLOCK:[
       '.product-price-container .price-sales-usd'
+    ]
   },
   CLINIQUE: {
     TAX: 0.083,
@@ -432,6 +433,18 @@ const WEBSITES = {
     TAX: 0,
     MATCH: "vitacost.com"
   },
+  ZARAUS:{
+    TAX: 0,
+    NAME: 'Zara',
+    MATCH: "zara.com/us",
+    JSONBLOCK: "$[0].offers.price"
+  },
+  ZARAES:{
+    TAX: 0,
+    RATE: 'EUR',
+    MATCH: "zara.com/es",
+    JSONBLOCK: "$[0].offers.price"
+  },
   ZULILY: {
     TAX: 0,
     MATCH: "zulily.com"
@@ -468,14 +481,21 @@ class Parser{
   constructor(dom){
     this.dom=dom;
   }
-  getJSON(jsonpath, from = 0){
+  // Lấy ra đoạn JSON từ thẻ <script type='application/ld+json'
+  // Default sẽ lấy script đầu tiên, nếu cần lấy cái thứ n thì đổi index 
+  // Lấy ra element theo JSONPath của web.JSONBLOCK
+  getJSON(jsonpath, index = 1){
     try{
+      var count=1;
       var scriptBlock = select(this.dom, 'script');
-      for (var i = from;i<scriptBlock.length; i++){
+      for (var i = 0;i<scriptBlock.length; i++){
         if (scriptBlock[i].attribs !== undefined && scriptBlock[i].attribs.type !== undefined && scriptBlock[i].attribs.type === 'application/ld+json'){
-          var json = JSON.parse(htmlparser.DomUtils.getText(scriptBlock[i]));  
-          console.log(json);      
-          return jp.query(json,jsonpath); 
+          count++;
+          if (count>index){
+            var json = JSON.parse(htmlparser.DomUtils.getText(scriptBlock[i]));  
+            //console.log(json);      
+            return jp.query(json,jsonpath).toString();
+          }
         }        
       }
       return "";
@@ -484,6 +504,8 @@ class Parser{
       return "";
     }
   }
+
+  // Lấy ra link href trong thẻ <a>, từ danh sách các block chứa link web.REDIRECT
   getLink(blockElementArray, index = 0){
     try{
       for (var i = 0; i < blockElementArray.length; i++) {          
@@ -498,6 +520,7 @@ class Parser{
       return "";
     }
   }
+  // Lấy ra plain text từ các array các block
   getText(blockElementArray, index = 0){
     try{    
       for (var i = 0; i < blockElementArray.length; i++) {          
@@ -514,6 +537,8 @@ class Parser{
     }
     
   }
+
+  // Lấy ra array text từ 1 bảng <td> hoặc <li>
   getTextArray(blockElementArray){
     try{
       var textArray=[];
@@ -775,8 +800,8 @@ class Item{
         }
         
         var redirect="";
-        if (website.att.PRICE3RDBLOCK!==undefined){
-          var newurl = myparser.getLink(website.att.PRICE3RDBLOCK);
+        if (website.att.REDIRECT!==undefined){
+          var newurl = myparser.getLink(website.att.REDIRECT);
           if (newurl!=="")
             redirect = website.domain + newurl;            
         }
