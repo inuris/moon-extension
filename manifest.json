@@ -1,28 +1,69 @@
 {
 	"manifest_version": 2,
+<<<<<<< HEAD
 	"name": "Công cụ báo giá MoonHangMy",
 	"short_name":"MoonBaoGia",
 	"version": "3.4.2",
 	"description": "Công cụ báo giá MoonHangMy", 
 	"background": {
 		"scripts": ["background.js"]
+=======
+
+	"name": "Công cụ báo giá MoonHangMy",
+	"short_name":"MoonBaoGia",
+	"version": "3.4",
+	"description": "Công cụ báo giá MoonHangMy", 
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+>>>>>>> 72805914565998fe94bf5db46033b6b1250fce05
 	},
 	"browser_action" :
 	{
 		"default_icon" : "icon.png"
 	},
 	"icons": { "16": "icon16.png",
+<<<<<<< HEAD
 					"48": "icon48.png",
+=======
+					 "48": "icon48.png",
+>>>>>>> 72805914565998fe94bf5db46033b6b1250fce05
 					"128": "icon128.png" },
 	"content_scripts": [
 		{
 			"css": ["styles.css"],
+<<<<<<< HEAD
 			"js": ["contentscript.js"],
 			"matches": ["https://www.amazon.com/*"],
 			"run_at": "document_end"
 		}
 	],
 	"web_accessible_resources": ["script_amazon.js"],
+=======
+			"js": ["global.js", "script_amazon.js"],
+			"matches": ["https://www.amazon.com/*"],
+			"run_at": "document_end"
+		},
+		{
+			"css": ["styles.css"],
+			"js": ["global.js", "script_ruelala.js"],
+			"matches": ["https://www.ruelala.com/*"],
+			"run_at": "document_end"
+		},
+		{
+			"css": ["styles.css"],
+			"js": ["global.js", "script_forever21.js"],
+			"matches": ["https://www.forever21.com/*"],
+			"run_at": "document_end"
+		},
+		{
+			"css": ["styles.css"],
+			"js": ["global.js", "script_others.js"],
+			"matches": ["http://www.carters.com/*"],
+			"run_at": "document_end"
+		}
+	],
+>>>>>>> 72805914565998fe94bf5db46033b6b1250fce05
 	"permissions": [
 		"activeTab"
 	]
