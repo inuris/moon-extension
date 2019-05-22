@@ -1,47 +1,28 @@
 {
 	"manifest_version": 2,
-
 	"name": "Công cụ báo giá MoonHangMy",
 	"short_name":"MoonBaoGia",
-	"version": "3.4",
+	"version": "3.4.2",
 	"description": "Công cụ báo giá MoonHangMy", 
 	"background": {
-		"scripts": ["background.js"],
-		"persistent": false
+		"scripts": ["background.js"]
 	},
 	"browser_action" :
 	{
 		"default_icon" : "icon.png"
 	},
 	"icons": { "16": "icon16.png",
-					 "48": "icon48.png",
+					"48": "icon48.png",
 					"128": "icon128.png" },
 	"content_scripts": [
 		{
 			"css": ["styles.css"],
-			"js": ["global.js", "script_amazon.js"],
+			"js": ["contentscript.js"],
 			"matches": ["https://www.amazon.com/*"],
-			"run_at": "document_end"
-		},
-		{
-			"css": ["styles.css"],
-			"js": ["global.js", "script_ruelala.js"],
-			"matches": ["https://www.ruelala.com/*"],
-			"run_at": "document_end"
-		},
-		{
-			"css": ["styles.css"],
-			"js": ["global.js", "script_forever21.js"],
-			"matches": ["https://www.forever21.com/*"],
-			"run_at": "document_end"
-		},
-		{
-			"css": ["styles.css"],
-			"js": ["global.js", "script_others.js"],
-			"matches": ["http://www.carters.com/*"],
 			"run_at": "document_end"
 		}
 	],
+	"web_accessible_resources": ["script_amazon.js"],
 	"permissions": [
 		"activeTab"
 	]

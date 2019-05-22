@@ -1,14 +1,17 @@
-//Listen for when a Tab changes state
+
+// Listen for when a Tab changes state
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-    if(changeInfo && changeInfo.status == "complete"){
+    if(changeInfo && changeInfo.status === "complete"){
         console.log("Tab updated: " + tab.url);
-
-        chrome.tabs.sendMessage(tabId, {data: tab}, function(response) {
-            console.log(response);
-        });
-
+        setTimeout(function(){
+            chrome.tabs.sendMessage(tabId, {method: "changeTab" }, function(response) {
+                console.log(response);
+            });
+        },1000)
+        
     }
 });
+
 // So sánh version, nếu có mới thì nhảy ra thông báo
 var manifest = chrome.runtime.getManifest();
 if (localStorage.version != manifest.version) {
