@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Công cụ báo giá MoonHangMy",
 	"short_name":"MoonBaoGia",
-	"version": "3.4.2",
+	"version": "3.4.4",
 	"description": "Công cụ báo giá MoonHangMy", 
 	"background": {
 		"scripts": ["background.js"]

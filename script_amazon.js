@@ -188,7 +188,8 @@ const CATEGORIES = {
 			'repair kits',
 			'sticks',
 			'tripods',
-			'styluses'
+			'styluses',
+			'screwdrivers'
 		]
 	},
 	AUTOMOTIVE: {
