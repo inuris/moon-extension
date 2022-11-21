@@ -1,4 +1,4 @@
-const RATE_USD_VND = 24066;
+const RATE_USD_VND = 25300;
 const FACEBOOK_APPID = '878760088950034';
 const FACEBOOK_PAGEID = '573537602700846';
 const FACEBOOK_LINK = 'https://www.facebook.com/moonhangmy';
@@ -557,6 +557,8 @@ function getAmazonPrice() {
 	var itemPrice = 0;
 	// Danh sách các block chứa giá
 	var itemPriceList = [
+		document.getElementById('pw-price-value'),
+		document.getElementById('corePrice_feature_div').getElementsByClassName('a-offscreen')[0],
 		document.getElementById('priceblock_dealprice'),
 		document.getElementById('priceblock_ourprice'),
 		document.getElementById('priceblock_saleprice'),
