@@ -1,4 +1,4 @@
-const RATE_USD_VND = 25300;
+const RATE_USD_VND = 25000;
 const FACEBOOK_APPID = '878760088950034';
 const FACEBOOK_PAGEID = '573537602700846';
 const FACEBOOK_LINK = 'https://www.facebook.com/moonhangmy';
