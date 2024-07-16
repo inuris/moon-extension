@@ -12,7 +12,7 @@ s.onload = function () {
 	s.remove();
 };
 
-const RATE_USD_VND = 26000;
+const RATE_USD_VND = 26200;
 const FACEBOOK_APPID = '878760088950034';
 const FACEBOOK_PAGEID = '573537602700846';
 const FACEBOOK_LINK = 'https://www.facebook.com/moonhangmy';
@@ -244,14 +244,14 @@ const CATEGORIES = {
 		NOTKEYWORD: []
 	},
 	GENERAL: {
-		SHIP: 8.5,
+		SHIP: 10,
 		EXTRA: 0,
 		PRICEEXTRA: 0,
 		PRICEANCHOR: 0,
 		HQEXTRA: 0.1,
 		HQANCHOR: 500,
 		NAME: 'Mặt hàng thông thường',
-		NOTE: 'Giá đã bao gồm Phí ship $8.5/kg',
+		NOTE: 'Giá đã bao gồm Phí ship $10/kg',
 		KEYWORD: [],
 		NOTKEYWORD: []
 	},
